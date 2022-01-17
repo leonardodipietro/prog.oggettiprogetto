@@ -10,7 +10,7 @@ public interface TweetService {
 
 //public abstract String createUrl(UrlGenerator url); 
 	
-public abstract GeoTweet readJSON(); 
+public abstract GenericTweet readJSON(); 
 public abstract JSONObject buildJSON(GenericTweet generictweet);
 
 	

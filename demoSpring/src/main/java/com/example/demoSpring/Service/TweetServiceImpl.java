@@ -27,13 +27,15 @@ public class TweetServiceImpl implements TweetService {
 	private  String url= "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?"; 
 	Vector<GeoTweet> geolocal = new Vector<GeoTweet>();
 	Vector<Place> location= new Vector <Place>();
-	//questo metodo legge il riga per riga il jsonobject in questione, dopodichè prende le informazioni rilevanti al suo interno e le salva nei campi del generictweet.
-
+	
+	
+	//questo metodo legge il riga per riga il jsonobject in questione, 
+	//dopodichè prende le informazioni rilevanti al suo interno e le salva nei campi del generictweet.
 
 
 	@SuppressWarnings("unused")
 	@Override
-	public GeoTweet readJSON() {
+	public GenericTweet readJSON() {
 		JSONObject obj= new JSONObject();
 
 		try {
@@ -117,13 +119,13 @@ public class TweetServiceImpl implements TweetService {
 
 		geolocal.add(geotweet);  
 
-		return geotweet;
+		return generictweet;
 
 	}
 
 
 
-	//questo metodo riceve come parametro il geotweet "aggiornato" e mi restituisce il json rilevante.
+	//questo metodo riceve come parametro il geotweet "aggiornato" e restituisce il json rilevante.
 
 
 
@@ -136,6 +138,7 @@ public class TweetServiceImpl implements TweetService {
 
 
 		// generictweeet
+		/*
 		JSONArray tweet = (JSONArray) obj.get("statuses"); 
 
 		JSONObject statuses = new JSONObject();  
@@ -143,26 +146,8 @@ public class TweetServiceImpl implements TweetService {
 		statuses.put("created_at", generictweet.getCreatedAt()); 
 		statuses.put("id", generictweet.getId()); 
 		statuses.put("text", generictweet.getText()); 
-
-
-
-		/* oppure : 
-		 * JSONArray tweet =(JSONArray) obj.get("statuses"); 
-		 * for(int i=0 ; i<tweet.size(); i++){
-		 * JSONObject statuses = (JSONObject) tweet.get(i); 
-
-		statuses.put("created_at", generictweet.getCreatedAt()); 
-		statuses.put("id", generictweet.getId()); 
-		statuses.put("text", generictweet.getText()); 
-		 * 
-		 * 
-		 * 
-		 */
-
-
-
-
-		// Credo che non serva il jsonarray qui
+*/
+       
 
 		JSONArray list= (JSONArray) obj.get("place");  
 
@@ -179,33 +164,24 @@ public class TweetServiceImpl implements TweetService {
 		}
 
 
-
-
-		JSONObject geo = new JSONObject(); 
-		GeoTweet geotweet = new GeoTweet();
+       
+		JSONArray listelement= (JSONArray) obj.get("geo");
+        
+       for (GeoTweet geotweet : generictweet.getGeolocal()) {
+		
+        	
+        JSONObject geo = new JSONObject(); 
+		//GeoTweet geotweet = new GeoTweet();
 
 		geo.put("coordinates", geotweet.getCoord()); 
 		geo.put("type", geotweet.getType()); 
 
+		listelement.add(geo);
+		
+        }
 		return obj; 
 
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -21,23 +21,18 @@ public class DayStats {
 	//Il seguente metodo restituisce il numero di tweet che 
 	//vengono scritti nella stessa location nel giorno inserito
 	
-     public JSONObject daystats() {
+     public int daystats() {
     	 
     	 int count=0; 
     	 
     	for( int i=0 ; i<tweet.getLocation().size(); i++) {
     		
-    	if(tweet.getLocation().get(i)== tweet.getLocation().get(i++)){
-    			
-    		  count++; 
-    		
-    	}
-    		
-    		 
-    		 
-    	 }
+    	if(tweet.getLocation().get(i)== tweet.getLocation().get(i++))
+    			 count++; 
+    			 
+    		 }
     	 
-    	 
+    	 return count; 
      }
 	
 
