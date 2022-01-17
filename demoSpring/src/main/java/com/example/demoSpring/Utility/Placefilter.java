@@ -11,9 +11,11 @@ import com.example.demoSpring.Model.Place;
 public class Placefilter implements Filter {
 
 	String place; 
+	private GenericTweet generictweet;
 	
-	public Placefilter(String palce) {
+	public Placefilter(String place,GenericTweet generictweet) {
 		this.place =place;
+		this.generictweet= generictweet;
 	}
 
 	
@@ -23,7 +25,7 @@ public class Placefilter implements Filter {
     
 	
 	@Override
-	public JSONObject getFilter(GenericTweet generictweet) throws PlaceException {
+	public JSONObject getFilter() throws PlaceException {
 		// TODO Auto-generated method stub
 		JSONObject obj = new JSONObject (); 
 		

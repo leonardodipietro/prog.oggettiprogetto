@@ -12,9 +12,11 @@ import com.example.demoSpring.Service.TweetServiceImpl;
 
 public class Dayfilter implements Filter{
     LocalDate date; 
-	
-    public Dayfilter(LocalDate date) {
+    private GenericTweet generictweet; 
+    
+    public Dayfilter(LocalDate date,GenericTweet generictweet) {
     	this.date = date; 
+    	this.generictweet= generictweet;
     	
     }
    
@@ -27,7 +29,7 @@ public class Dayfilter implements Filter{
     
     
 	@Override
-	public JSONObject getFilter(GenericTweet generictweet) throws DataException {
+	public JSONObject getFilter() throws DataException {
 		// TODO Auto-generated method stub
 		JSONObject obj= new JSONObject(); 
 		

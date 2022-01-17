@@ -1,5 +1,5 @@
 package com.example.demoSpring.Stats;
 
-public class Distance {
+public class Statistic {
 
 }

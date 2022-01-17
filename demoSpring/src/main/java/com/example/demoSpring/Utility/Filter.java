@@ -9,7 +9,7 @@ import com.example.demoSpring.Model.GeoTweet;
 
 public interface Filter{
 	
-	public abstract JSONObject getFilter(GenericTweet generictweet) throws DataException, PlaceException; 
+	public abstract JSONObject getFilter() throws DataException, PlaceException; 
     
 	
 }
