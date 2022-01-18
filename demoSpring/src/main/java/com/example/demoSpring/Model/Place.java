@@ -13,6 +13,12 @@ public class Place {
 	
 	private String country;
 
+	public Place (String name,String place_type,String country){
+		this.name=name;
+		this.place_type=place_type;
+		this.country=country;
+	}
+
 	public String getName() {
 		return name;
 	}
