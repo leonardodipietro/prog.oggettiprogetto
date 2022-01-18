@@ -1,29 +1,27 @@
-package com.example.demoSpring.Utility;
+package com.example.demoSpring.Filter;
 
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 
 import org.json.simple.JSONObject;
 
-import com.example.demo.Exception.DataException;
+import com.example.demoSpring.Exception.DataException;
 import com.example.demoSpring.Model.GenericTweet;
 import com.example.demoSpring.Model.GeoTweet;
 import com.example.demoSpring.Service.TweetServiceImpl;
 
 public class Dayfilter implements Filter{
-    LocalDate date; 
-    private GenericTweet generictweet; 
     
-    public Dayfilter(LocalDate date,GenericTweet generictweet) {
-    	this.date = date; 
-    	this.generictweet= generictweet;
-    	
-    }
-   
+    GenericTweet generictweet;
+	LocalDate date; 
 	
+	public Dayfilter(GenericTweet generictweet,LocalDate date) {
+		this.generictweet=generictweet;
+		this.date=date;
+	}
+
     
-    
-    //getFilter prende in input il generictweet di readJSON (che contiene i vari setter del model)   
+    //getFilter prende in input il generictweet di readJSON   
     //filtra i tweet in base alla dat inserita
     // ad esempio far restituire quanti tweet vengono fatti in una data città
     
@@ -37,7 +35,6 @@ public class Dayfilter implements Filter{
 		if(generictweet.getCreatedAt()==null) throw new DataException("Data non presente nel tweet");
 		
 		
-		
 	if ( generictweet.getCreatedAt().compareTo(date)==0) {
 		
 	   obj.put("created_at", generictweet.getCreatedAt()); 
@@ -46,28 +43,9 @@ public class Dayfilter implements Filter{
 
 	}
 	    
-		
-		
-	
 	return  obj; 
 		
 	}
 	
-	
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-	
-
-
-
 	
 }

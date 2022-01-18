@@ -10,12 +10,18 @@ public class GetCoordinates {
 	
 	private Vector<String> city;
 	private Vector<String> coord;
+	/*
 	
 	public GetCoordinates(Vector<String> city, Vector<String> coord) {
 		super();
 		this.city = city;
 		this.coord = coord;
 	}
+	
+	*/
+	
+	// Legge un fil riga per riga contenente alcune città italiane con le loro coordinate 
+	// e le assegna a due vettori paralleli , dopodiche restituisce le coordinate della citta inserita
 	
 	public String getCoordinates(String input) {
 		

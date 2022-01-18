@@ -1,32 +1,32 @@
-package com.example.demoSpring.Utility;
+package com.example.demoSpring.Filter;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.example.demo.Exception.PlaceException;
+import com.example.demoSpring.Exception.DataException;
+import com.example.demoSpring.Exception.PlaceException;
 import com.example.demoSpring.Model.GenericTweet;
 import com.example.demoSpring.Model.GeoTweet;
 import com.example.demoSpring.Model.Place;
 
-public class Placefilter implements Filter {
+public class Placefilter implements Filter{
 
-	String place; 
-	private GenericTweet generictweet;
+	GenericTweet generictweet;
+	String place;
 	
-	public Placefilter(String place,GenericTweet generictweet) {
-		this.place =place;
+	public Placefilter(GenericTweet generictweet,String place) {
+		
 		this.generictweet= generictweet;
+		this.place=place;
 	}
 
 	
-	
-	//getFilter prende in input il geotweet di readJSON (che contiene i vari setter del model)   
+	//getFilter prende in input il geotweet di readJSON    
     //filtra i tweet in base ad un luogo specifico
     
-	
-	@Override
+
 	public JSONObject getFilter() throws PlaceException {
-		// TODO Auto-generated method stub
+	
 		JSONObject obj = new JSONObject (); 
 		
 		JSONArray list= (JSONArray) obj.get("place");  
@@ -42,6 +42,8 @@ public class Placefilter implements Filter {
 			obj.put("name", pp.getName()); 
 			obj.put("Country",pp.getCountry() ); 
 			obj.put("place_type", pp.getPlace_type());
+			
+			list.add(place);
 		}
 		}
 		

@@ -1,4 +1,4 @@
-package com.example.demo.Exception;
+package com.example.demoSpring.Exception;
 
 public class PlaceException extends Exception {
 
